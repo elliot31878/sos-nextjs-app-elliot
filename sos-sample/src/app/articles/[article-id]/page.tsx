@@ -1,7 +1,8 @@
+import { ArticleDetail } from "@/modules/articlesDetail/articlesDetail";
 import React from "react";
 
-const ArticleDetail: React.FC = React.memo(() => {
+const ArticleDetailPage: React.FC = React.memo(() => {
   return <ArticleDetail />;
 });
 
-export default ArticleDetail;
+export default ArticleDetailPage;
