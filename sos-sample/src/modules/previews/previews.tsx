@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import { ArticlesSection } from "./articles/articles";
 import { TodosSection } from "./todos/todos";

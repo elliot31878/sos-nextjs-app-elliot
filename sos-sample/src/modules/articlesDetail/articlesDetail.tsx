@@ -8,9 +8,7 @@ import { useLocation } from "@/hooks/useLocation";
 import { Doctor } from "@/app/@redux/actions/@types";
 import Image from "next/image";
 import { Typography } from "@mui/material";
-
 import { useLoaderImage } from "@/hooks/useLoaderImage";
-
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { TextSample } from "@/constant/text";
 

@@ -19,7 +19,6 @@ import {
 import apiClient from "@/app/network/axios";
 import { Doctor } from "../actions/@types";
 
-// Define a type for the saga function
 type FetchDoctorsResponse = AxiosResponse<Doctor[]>;
 
 function* fetchDoctorsSaga(): Generator<
