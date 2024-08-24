@@ -1,13 +1,13 @@
+import React from "react";
 import { useLoaderImage } from "@/hooks/useLoaderImage";
 import { Button, Typography } from "@mui/material";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import Image from "next/image";
-import React from "react";
-
-import styles from "./card.module.scss";
 import { Doctor } from "@/app/@redux/actions/@types";
 import { useNavigate } from "@/hooks/useNavigate";
 import { routeNames } from "@/constant/routeNames";
+
+import styles from "./card.module.scss";
 
 export const Card: React.FC<Doctor> = React.memo((doctor) => {
   const loader = useLoaderImage();

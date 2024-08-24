@@ -1,7 +1,8 @@
+import { TodoList } from "@/modules/todoList/todoList";
 import React from "react";
 
-const TodoList = React.memo(() => {
-  return <>Todo List</>;
+const TodoListPage = React.memo(() => {
+  return <TodoList />;
 });
 
-export default TodoList;
+export default TodoListPage;

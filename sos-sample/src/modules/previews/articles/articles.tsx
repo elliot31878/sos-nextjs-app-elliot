@@ -1,18 +1,18 @@
 "use client";
 
+import React, { useEffect, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Doctor } from "@/app/@redux/actions/@types";
 import { fetchDoctorsRequest } from "@/app/@redux/actions/actions";
 import { Card } from "@/components/card/card";
 import { RootState } from "@/modules/clientLayout/@reduxStore";
 import { UnknownAction } from "@reduxjs/toolkit";
-import React, { useEffect, useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-import styles from "./articles.module.scss";
 import { Button, Skeleton, Typography, useMediaQuery } from "@mui/material";
 import { isMobile } from "react-device-detect";
 import { useNavigate } from "@/hooks/useNavigate";
 import { routeNames } from "@/constant/routeNames";
+
+import styles from "./articles.module.scss";
 
 export type ArticlesSectionType = {
   isMore?: boolean;
@@ -23,6 +23,7 @@ export const ArticlesSection: React.FC<ArticlesSectionType> = React.memo(
     const dispatch = useDispatch();
     const selector = useSelector((state: RootState) => state.doctor);
     const navigation = useNavigate();
+    const isMobileQuery = useMediaQuery("(max-width:800px)");
     useEffect(() => {
       dispatch(fetchDoctorsRequest() as UnknownAction);
       const onOnline = () => {
@@ -59,7 +60,6 @@ export const ArticlesSection: React.FC<ArticlesSectionType> = React.memo(
       [isMore]
     );
 
-    const isMobileQuery = useMediaQuery("(max-width:800px)");
     return (
       <main className={styles["articles"]}>
         <header className={styles["articles__header"]}>
