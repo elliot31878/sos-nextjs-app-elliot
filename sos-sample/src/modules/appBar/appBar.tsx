@@ -1,17 +1,24 @@
-import { APP_BAR_ITEMS, SOS_LINK } from "@/constant/appbar-items";
-import { useLoaderImage } from "@/hooks/useLoaderImage";
-import { Button, Typography } from "@mui/material";
-import Image from "next/image";
 import React from "react";
-import styles from "./appbar.module.scss";
-import { useLocation } from "@/hooks/useLocation";
-
+import Image from "next/image";
+import { Box, Button, useMediaQuery } from "@mui/material";
 import { useNavigate } from "@/hooks/useNavigate";
+import { useLocation } from "@/hooks/useLocation";
+import { useLoaderImage } from "@/hooks/useLoaderImage";
+import { APP_BAR_ITEMS, SOS_LINK } from "@/constant/appbar-items";
+import MenuIcon from "@mui/icons-material/Menu";
 
-export const AppBar = React.memo(() => {
+import styles from "./appbar.module.scss";
+
+export type AppBarProps = {
+  toggleDrawer: (isOpen: boolean) => void;
+};
+
+export const AppBar: React.FC<AppBarProps> = React.memo(({ toggleDrawer }) => {
   const loader = useLoaderImage();
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const isMobileQuery = useMediaQuery("(max-width:800px)");
+
   return (
     <header className={styles["app-bar"]}>
       {APP_BAR_ITEMS.map((item) => {
@@ -45,13 +52,26 @@ export const AppBar = React.memo(() => {
 
           case "icon":
             return (
-              <Image
-                loader={loader}
-                width={100}
-                height={70}
-                src={SOS_LINK}
-                alt="SOS"
-              />
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Image
+                  loader={loader}
+                  width={100}
+                  height={70}
+                  src={SOS_LINK}
+                  alt="SOS"
+                />
+                {isMobileQuery && (
+                  <Button onClick={() => toggleDrawer(true)}>
+                    <MenuIcon />
+                  </Button>
+                )}
+              </Box>
             );
         }
       })}

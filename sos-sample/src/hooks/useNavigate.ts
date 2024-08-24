@@ -1,7 +1,5 @@
 import { usePathname, useRouter } from "next/navigation";
 import qs from "query-string";
-import { useContext } from "react";
-
 import { matchRoutesFunc } from "./useMatch";
 
 export function useNavigate<TParams = any, TState = any>() {
@@ -60,6 +58,7 @@ export function useNavigate<TParams = any, TState = any>() {
       safePathName,
     }: NavigateOptions = {}
   ): void {
+    if (to === window.location.pathname) return;
     const cleanSearch = Object.fromEntries(
       Object.entries(search || {}).filter(
         ([_, value]) => value !== null && value !== undefined && value !== ""
