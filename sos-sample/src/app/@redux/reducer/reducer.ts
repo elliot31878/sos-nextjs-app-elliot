@@ -16,7 +16,6 @@ export const doctorReducer = (state = initialState, action: IAction) => {
     case FETCH_DOCTORS_REQUEST:
       return { ...state, loading: true };
     case FETCH_DOCTORS_SUCCESS:
-      console.log(action, state);
       return { ...state, loading: false, doctors: action.payload };
     case FETCH_DOCTORS_FAILURE:
       return { ...state, loading: true, error: action.payload };
